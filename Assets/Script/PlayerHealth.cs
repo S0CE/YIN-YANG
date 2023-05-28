@@ -12,6 +12,19 @@ public class PlayerHealth : MonoBehaviour
     public SpriteRenderer graphics;
     public HeartContainer heartContainer;
 
+    public static PlayerHealth instance;
+
+    private void Awake()
+    {
+        if (instance != null)
+        {
+            Debug.LogWarning("Plus d'une instance PlayerHealth");
+            return;
+        }
+
+		instance = this;
+    }
+
     void Start()
     {
         health = 3;
@@ -26,11 +39,37 @@ public class PlayerHealth : MonoBehaviour
     {
         if (!isInvincible) {
             health -= damage;
+
+            if (health <= 0) {
+                Die();
+                return;
+            }
+
             isInvincible = true;
             StartCoroutine(InvincibleFlash());
             StartCoroutine(InvincibleDelay());
         }
 
+    }
+
+    public void Die()
+    {
+        PlayerMovement.instance.enabled = false;
+        PlayerMovement.instance.animator.SetTrigger("Die");
+        PlayerMovement.instance.rb.bodyType = RigidbodyType2D.Kinematic;
+        PlayerMovement.instance.playerCollision.enabled = false;
+        PlayerMovement.instance.rb.velocity = Vector3.zero;
+        GameOverManager.instance.OnPlayerDeath();
+    }
+
+    public void Respawn()
+    {
+        PlayerMovement.instance.enabled = true;
+        PlayerMovement.instance.animator.SetTrigger("Respawn");
+        PlayerMovement.instance.rb.bodyType = RigidbodyType2D.Dynamic;
+        PlayerMovement.instance.playerCollision.enabled = true;
+        GameOverManager.instance.OnPlayerDeath();
+        health = 3;
     }
 
     public IEnumerator InvincibleFlash()

@@ -15,9 +15,23 @@ public class PlayerMovement : MonoBehaviour
 	public Rigidbody2D rb;
 	public Animator animator;
 	public SpriteRenderer spriteRenderer;
+	public CapsuleCollider2D playerCollision;
 	
 	private Vector3 velocity = Vector3.zero;
 	private float horizontalMovement;
+
+	public static PlayerMovement instance;
+
+    private void Awake()
+    {
+        if (instance != null)
+        {
+            Debug.LogWarning("Plus d'une instance PlayerMovement");
+			return;
+        }
+
+		instance = this;
+    }
 
 	void Update()
 	{
