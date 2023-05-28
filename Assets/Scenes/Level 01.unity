@@ -2044,7 +2044,7 @@ GameObject:
   - component: {fileID: 1512315322}
   - component: {fileID: 1512315321}
   - component: {fileID: 1512315320}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: Fondation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4629,7 +4629,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 0.01
+  m_PixelsPerUnitMultiplier: 1
 --- !u!222 &1668371671
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4981,7 +4981,7 @@ GameObject:
   - component: {fileID: 1733328815}
   - component: {fileID: 1733328818}
   - component: {fileID: 1733328817}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: InvisibleBlockInBlackBackGround
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5419,7 +5419,7 @@ MonoBehaviour:
   groundCheckSize: 0.26
   collisionlayer:
     serializedVersion: 2
-    m_Bits: 384
+    m_Bits: 64
   rb: {fileID: 1976123107}
   animator: {fileID: 1976123110}
   spriteRenderer: {fileID: 1976123108}
@@ -5742,7 +5742,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 2100000, guid: 0bb3860d394b54d68b6b7b211da947dd, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
